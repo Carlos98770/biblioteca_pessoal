@@ -1,7 +1,7 @@
 import "./Card.css";
 
 export function Card({ book }) {
-  const statusClass = book.status ? "available" : "unavailable";
+  const statusClass = book.read ? "available" : "unavailable";
 
   return (
     <article className="card">
@@ -18,7 +18,7 @@ export function Card({ book }) {
 
       <div className="card-footer">
         <span className={`status ${statusClass}`}>
-          {book.status ? "Disponivel" : "Indisponível"}
+          {book.read ? "Finalizado" : "Lendo"}
         </span>
       </div>
     </article>

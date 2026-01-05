@@ -9,6 +9,7 @@
   flex-direction: column;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   cursor: pointer;
+  height: 100%; /* Faz o card ocupar toda a altura disponível */
 }
 
 /* Efeito ao passar o mouse */

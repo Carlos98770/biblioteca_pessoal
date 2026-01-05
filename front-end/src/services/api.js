@@ -10,3 +10,28 @@ export async function getBooks() {
 //   console.log("Response:", response.json()); // Log the entire response object for debugging
   return response.json();
 }
+
+export async function createBook(book){
+    fetch(`${API_URL}/books`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(book)
+    }
+    )
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Erro ao criar livro');
+        }
+        return response.json();
+
+    })
+    .then(data => {
+        console.log('Livro criado com sucesso:', data);
+    })
+    .catch(error => {
+        console.error('Erro:', error);
+    });
+
+}

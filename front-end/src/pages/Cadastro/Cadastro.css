@@ -1,0 +1,17 @@
+.Cadastro {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    gap: 50px;
+    background-color: #121212; /* Fundo escuro para combinar */
+
+}
+
+/* Este elemento vai empurrar o footer para baixo e centralizar o form */
+.Cadastro main {
+    flex: 1; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
