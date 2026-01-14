@@ -1,13 +1,12 @@
 import { Footer } from "../../components/Footer/Footer"
-import "../../components/Form/Form"
-import Form from "../../components/Form/Form"
-
+import BookForm from "../../components/Form/BookForm"
+import "./Cadastro.css"
 
 export function Cadastro(){
     return(
         <div className="Cadastro">
             <main>
-                <Form />
+                <BookForm />
             </main>
             
             <Footer />

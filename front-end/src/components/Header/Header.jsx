@@ -13,7 +13,7 @@ export function Header() {
       </div>
       <div className="header-actions">
         
-        <Button text="Login" onClick={() => alert("Login clicado")} />
+        <Button text="Login" onClick={() => navigate("/login")} />
         <Button text="Novo Livro" variant="secondary" onClick={() => navigate("/books/new")} />
 
       </div>
