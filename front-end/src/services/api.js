@@ -35,3 +35,20 @@ export async function createBook(book){
     });
 
 }
+
+export async function updateBookStatus(bookId, newStatus) {
+  // Simula uma chamada de rede (delay)
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      console.log(`Livro ${bookId} atualizado para: ${newStatus ? "Lido" : "Lendo"}`);
+      resolve({ success: true });
+    }, 500); // 0.5 segundos de delay
+  });
+  
+  // Numa API real seria algo como:
+  // const response = await fetch(`http://api.com/books/${bookId}`, {
+  //   method: 'PATCH',
+  //   body: JSON.stringify({ read: newStatus })
+  // });
+  // return response.json();
+}

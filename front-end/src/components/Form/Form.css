@@ -10,6 +10,15 @@
   --error-color: #ef4444;
   --radius: 8px;
   --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -2px rgba(0, 0, 0, 0.3);
+  --bg-page: #111827;
+}
+
+body {
+  background-color: var(--bg-page);
+  margin: 0;
+  font-family: 'Inter', sans-serif; /* Garante a fonte no corpo todo */
+  color: var(--text-main);
+  min-height: 100vh;
 }
 
 /* Container Genérico para ambos os forms */
@@ -157,6 +166,7 @@
   color: var(--text-muted);
 }
 
+
 .form-footer a {
   color: var(--primary-color);
   text-decoration: none;
@@ -165,4 +175,48 @@
 
 .form-footer a:hover {
   text-decoration: underline;
+}
+/* Feedback de Sucesso */
+.success-message {
+  margin-top: 1rem;
+  padding: 0.75rem;
+  background-color: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  color: #10b981; /* Verde Esmeralda */
+  border-radius: var(--radius);
+  font-size: 0.875rem;
+  text-align: center;
+  animation: fadeIn 0.3s ease-in;
+}
+
+/* Modificação do botão quando dá sucesso */
+.btn-submit.btn-success {
+  background-color: #059669; /* Um verde um pouco mais escuro */
+  cursor: default;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Ajustes para cabeçalhos com subtítulos (usado no Cadastro) --- */
+
+/* Container para agrupar título e subtítulo */
+.form-header-simple {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+/* Quando o H2 está dentro deste container, removemos a margem inferior grande
+   que ele tem por padrão na regra `.modern-form h2`, para ficar perto do parágrafo. */
+.form-header-simple h2 {
+  margin-bottom: 0.5rem;
+}
+
+/* Estilo do subtítulo */
+.form-header-simple p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin: 0;
 }

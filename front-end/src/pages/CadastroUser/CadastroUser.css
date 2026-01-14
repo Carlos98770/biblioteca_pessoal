@@ -1,0 +1,14 @@
+.Cadastro {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #111827; /* Fundo escuro da página inteira */
+}
+
+.content-center {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Isso garante que o card fique bem no meio da tela */
+    padding: 2rem;
+}

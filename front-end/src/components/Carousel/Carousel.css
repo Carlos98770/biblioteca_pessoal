@@ -1,57 +1,119 @@
+/* Carousel.css */
 .carousel-wrapper {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 12px;
   width: 100%;
+  max-width: 1000px; /* Limita a largura máxima para não esticar demais */
+  margin: 0 auto;
+  padding-bottom: 2rem; /* Espaço para os indicadores */
 }
 
 .carousel-window {
   overflow: hidden;
-  width: 900px; /* 3 cards */
-  max-width: 100%;
+  width: 100%;
+  padding: 10px 0; /* Espaço vertical para a sombra do hover não cortar */
 }
 
 .carousel-track {
   display: flex;
-  transition: transform 0.4s ease;
+  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1); /* Animação mais suave */
 }
 
 .carousel-page {
   min-width: 100%;
   display: flex;
   justify-content: center;
-  gap: 16px;
+  gap: 20px; /* Espaço entre os cards */
 }
 
-.carousel-item {
+.carousel-item-wrapper {
   width: 280px;
+  display: flex;
+  justify-content: center;
 }
 
-/* 👇 placeholder invisível */
-.placeholder {
+/* Placeholder invisível deve ocupar espaço mas não aparecer */
+.carousel-item.placeholder {
   width: 280px;
   visibility: hidden;
 }
 
-.nav {
-  background: none;
-  border: none;
-  font-size: 24px;
+/* Botões de Navegação Modernos */
+.nav-btn {
+  background: rgba(31, 41, 55, 0.8); /* Fundo semi-transparente */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--primary);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
+  transition: all 0.2s;
+  z-index: 10;
+  
+  /* Posicionamento absoluto para ficar "em cima" ou ao lado sem empurrar o layout */
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
-.card {
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 16px;
-  background: #fff;
+.nav-btn:hover {
+  background: var(--primary);
+  color: white;
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 0 15px rgba(16, 185, 129, 0.4);
 }
 
-.available {
-  color: green;
+.nav-btn.prev {
+  left: -20px; /* Puxa um pouco para fora */
 }
 
-.unavailable {
-  color: red;
+.nav-btn.next {
+  right: -20px;
+}
+
+/* Indicadores (Bolinhas) */
+.carousel-indicators {
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+}
+
+.indicator {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--text-muted);
+    opacity: 0.3;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.indicator.active {
+    background-color: var(--primary);
+    opacity: 1;
+    transform: scale(1.2);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  /* Em telas menores, esconde as setas laterais se atrapalharem */
+  .nav-btn {
+      width: 36px;
+      height: 36px;
+  }
+  .nav-btn.prev { left: 0; }
+  .nav-btn.next { right: 0; }
+  
+  /* Ajusta o gap */
+  .carousel-page {
+      gap: 10px;
+  }
 }

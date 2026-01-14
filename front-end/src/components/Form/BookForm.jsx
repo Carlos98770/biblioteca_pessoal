@@ -16,6 +16,7 @@ export default function BookForm() {
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [success, setSuccess] = useState(false); // ✅ Novo estado de sucesso
 
   function handleChange(e) {
     const { name, value, type, checked } = e.target;
@@ -29,14 +30,23 @@ export default function BookForm() {
     e.preventDefault();
     setLoading(true);
     setError(null);
+    setSuccess(false);
 
     try {
       await createBook(formData);
-      navigate("/");
+      
+      // ✅ Feedback visual de sucesso
+      setSuccess(true);
+      
+      // ✅ Aguarda 1.5 segundos para o usuário ver a mensagem antes de voltar
+      // Isso torna a transição suave
+      setTimeout(() => {
+        navigate("/dashboard"); 
+      }, 1500);
+
     } catch (err) {
       setError("Ocorreu um erro ao cadastrar o livro. Tente novamente.");
-    } finally {
-      setLoading(false);
+      setLoading(false); // Só para o loading se der erro. Se der sucesso, mantemos o loading/sucesso até navegar.
     }
   }
 
@@ -54,6 +64,7 @@ export default function BookForm() {
           onChange={handleChange}
           placeholder="Ex: O Senhor dos Anéis"
           required
+          disabled={loading || success} // Trava inputs durante o envio
         />
       </div>
 
@@ -67,6 +78,7 @@ export default function BookForm() {
           onChange={handleChange}
           placeholder="Ex: J.R.R. Tolkien"
           required
+          disabled={loading || success}
         />
       </div>
 
@@ -79,6 +91,7 @@ export default function BookForm() {
           onChange={handleChange}
           placeholder="Escreva uma breve sinopse..."
           maxLength={1000}
+          disabled={loading || success}
         />
       </div>
 
@@ -89,15 +102,23 @@ export default function BookForm() {
           name="read"
           checked={formData.read}
           onChange={handleChange}
+          disabled={loading || success}
         />
         <label htmlFor="read">Já terminei a leitura</label>
       </div>
 
-      <button className="btn-submit" type="submit" disabled={loading}>
-        {loading ? "Salvando..." : "Salvar Livro"}
+      {/* Botão muda de texto dependendo do estado */}
+      <button 
+        className={`btn-submit ${success ? 'btn-success' : ''}`} 
+        type="submit" 
+        disabled={loading || success}
+      >
+        {success ? "Livro Cadastrado! ✓" : (loading ? "Salvando..." : "Salvar Livro")}
       </button>
 
+      {/* Mensagens de Feedback */}
       {error && <div className="error">⚠️ {error}</div>}
+      {success && <div className="success-message">Redirecionando para a estante...</div>}
     </form>
   );
 }

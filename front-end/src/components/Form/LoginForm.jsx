@@ -71,7 +71,7 @@ export default function LoginForm() {
       {error && <div className="error">⚠️ {error}</div>}
 
       <div className="form-footer">
-        <p>Não tem uma conta? <a href="/register">Cadastre-se</a></p>
+        <p>Não tem uma conta? <a href="/cadastro">Cadastre-se</a></p>
       </div>
     </form>
   );
