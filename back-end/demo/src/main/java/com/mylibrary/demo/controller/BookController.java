@@ -9,11 +9,11 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/books")
-@CrossOrigin(
-        origins = "http://localhost:5173",
-        allowedHeaders = "*",
-        methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE}
-)
+// @CrossOrigin(
+//         origins = "http://localhost:5173",
+//         allowedHeaders = "*",
+//         methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE}
+// )
 public class BookController {
 
     private final BookService service;
